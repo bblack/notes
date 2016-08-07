@@ -1,0 +1,11 @@
+%table
+  %thead
+    %tr
+      %th id
+      %th title
+      %th created at
+  - notes.each do |note|
+    %tr
+      %td= note.id
+      %td= note.title
+      %td= note.created_at
