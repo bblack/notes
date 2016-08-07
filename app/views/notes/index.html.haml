@@ -1,3 +1,4 @@
+%h1 notes
 %table
   %thead
     %tr
@@ -7,5 +8,7 @@
   - notes.each do |note|
     %tr
       %td= note.id
-      %td= note.title
+      %td
+        %a{:href => "/notes/#{note.id}"}
+          =note.title
       %td= note.created_at
