@@ -4,11 +4,16 @@
     %tr
       %th id
       %th title
-      %th created at
+      %th created
   - notes.each do |note|
     %tr
       %td= note.id
       %td
-        %a{:href => "/notes/#{note.id}"}
+        %a{:href => note_path(note)}
           =note.title
-      %td= note.created_at
+      %td
+        =time_ago_in_words(note.created_at)
+        ago
+  %tr
+    %td{colspan: 3}
+      %a{href: new_note_path} add new
