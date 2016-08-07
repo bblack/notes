@@ -28,7 +28,7 @@ class NotesController < ApplicationController
         authenticate_or_request_with_http_basic do |user, pass|
             salt = 'victory prima pils!@#$%^&*()'
             checksum = Digest::MD5.hexdigest(pass + salt)
-            return checksum == "ee1c89c6bef7d3b818b75750964a07af"
+            return checksum == config.pwhash
         end
     end
 end
