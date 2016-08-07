@@ -1,24 +1,7 @@
-# README
+# notes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+a simple app that lets a dude with a password save and view notes.
 
-Things you may want to cover:
+# getting started
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+standard rails fare, sqlite storage. `bundle install`, `rails db:migrate`, `rails s` to start. `rails test` to test.
