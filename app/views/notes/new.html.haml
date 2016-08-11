@@ -1,12 +1,10 @@
 %a{href: notes_path} &larr; back to notes
-
+%h1 new note
 = form_for note, url: {action: 'create'} do |f|
-    = label_tag :title, 'title'
-    %br
-    = f.text_field :title
-    %br
-    = label_tag :body, 'body'
-    %br
-    = text_area_tag 'note[body]', nil, {id: 'note_body', size: '40x10'}
-    %br
-    = f.submit :create
+    .form-group
+        = label_tag :title, 'title'
+        = f.text_field :title, class: 'form-control'
+    .form-group
+        = label_tag :body, 'body'
+        = text_area_tag 'note[body]', nil, {id: 'note_body', size: '40x10', class: 'form-control'}
+    = f.submit :create, class: 'btn btn-success'
