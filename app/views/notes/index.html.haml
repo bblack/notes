@@ -1,4 +1,7 @@
 %h1 notes
+- if notes.length == 0
+  %div.alert.alert-info
+    You have no notes. Click the button to add one.
 %div.container-fluid
   - rows.each do |row_notes|
     %div.row.notes
