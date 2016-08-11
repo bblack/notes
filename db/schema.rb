@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160807200232) do
+ActiveRecord::Schema.define(version: 20160811183711) do
 
   create_table "notes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text     "body"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.text     "title"
+    t.binary   "body_encrypted"
   end
 
 end
