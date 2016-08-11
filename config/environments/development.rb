@@ -52,5 +52,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.pwhash = "ee1c89c6bef7d3b818b75750964a07af"
+  config.keyhash = "a98779f495e2baf8716d47f20d5a9ab1"
 end

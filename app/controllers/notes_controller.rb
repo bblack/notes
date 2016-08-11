@@ -7,7 +7,13 @@ class NotesController < ApplicationController
     end
 
     def show
-        render locals: {note: Note.find(params[:id])}
+        note = Note.find(params[:id])
+
+        decipher = OpenSSL::Cipher.new('AES-256-CFB')
+        decipher.decrypt
+        decipher.key = @key
+
+        render locals: {note: note}
     end
 
     def new
@@ -15,7 +21,16 @@ class NotesController < ApplicationController
     end
 
     def create
-        note = Note.create(note_params)
+        cipher = OpenSSL::Cipher.new('AES-256-CFB')
+        cipher.encrypt
+        cipher.key = @key
+        body_encrypted = cipher.update(note_params[:body]) + cipher.final
+
+        note = Note.create(
+            note_params
+            .except(:body)
+            .merge(body_encrypted: body_encrypted)
+        )
         redirect_to(note_path(note))
     end
 
@@ -28,8 +43,8 @@ class NotesController < ApplicationController
     def authenticate
         authenticate_or_request_with_http_basic do |user, pass|
             salt = 'victory prima pils!@#$%^&*()'
-            checksum = Digest::MD5.hexdigest(pass + salt)
-            checksum == Rails.application.config.pwhash
+            @key = Digest::MD5.hexdigest(pass + salt)
+            Digest::MD5.hexdigest(@key) == Rails.application.config.keyhash
         end
     end
 end

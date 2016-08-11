@@ -3,4 +3,4 @@
     %span=note.title
     %br
     %small ##{note.id}, created #{time_ago_in_words(note.created_at)} ago
-%pre=note.body
+%pre=note.body(@key)

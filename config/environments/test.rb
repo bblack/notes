@@ -40,5 +40,5 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.pwhash = "de9350d3799cca91c011805de47f7c51"
+  config.keyhash = "b2dbded690c973bd4a79cfcfcdead1ad"
 end
