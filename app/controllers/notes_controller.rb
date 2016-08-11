@@ -2,7 +2,8 @@ class NotesController < ApplicationController
     before_action :authenticate, only: [:show, :create]
 
     def index
-        render locals: {notes: Note.all}
+        rows = Note.all.each_slice(4).to_a
+        render locals: {notes: Note.all, rows: rows}
     end
 
     def show

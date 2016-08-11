@@ -1,18 +1,12 @@
 %h1 notes
-%table
-  %thead
-    %tr
-      %th id
-      %th title
-      %th created
-  - notes.each do |note|
-    %tr
-      %td= note.id
-      %td
-        %a{:href => note_path(note)}
-          =note.title
-      %td
-        =time_ago_in_words(note.created_at)
-        ago
-%br
+%div.container-fluid
+  - rows.each do |row_notes|
+    %div.row.notes
+      - row_notes.each do |note|
+        .col-md-3
+          .note
+            %h2= note.title
+            %p.small.text-muted
+              =time_ago_in_words(note.created_at)
+              ago
 %a{href: new_note_path} create new note
